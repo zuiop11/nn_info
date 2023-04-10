@@ -38,7 +38,7 @@ class info:
     #        
     def estimator(self, tpl):
         
-        if self.approach == 'nn_ratio':
+        if self.approach == 'nn_ratio' and not self.measure == 'entropy':
         
             return est.BannMI(tpl, 
                           measure=self.measure, 
