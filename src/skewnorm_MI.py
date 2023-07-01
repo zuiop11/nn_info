@@ -90,7 +90,7 @@ for dlt in 0.1*np.arange(1,9):
         #%%
         
         b = est.BannMI((z[0,:],z[1,:]),measure='MI', k = 10, unit='nats', prior='empiric')
-        bx = est.BannMI((z[0,:],z[1,:]),measure='MI', k = 10, unit='nats', prior=1.)
+        bx = est.BannMI((z[0,:],z[1,:]),measure='MI', k = 10, unit='nats', prior=0.1)
         ksg = est.KSG((z[0,:],z[1,:]), k = 1)
         nmi = est.NMI((z[0,:],z[1,:]), measure='MI', k = 10, unit='nats', eps=True)
         w = est.WMI((z[0,:],z[1,:]), measure='MI', k = 2, unit='nats', eps=True)

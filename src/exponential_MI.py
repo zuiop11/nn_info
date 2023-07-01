@@ -5,12 +5,13 @@ import estimators as est
 import matplotlib.pyplot as plt
 from scipy.stats import expon
 from scipy.integrate import nquad
+import random
 
 #this file produces benchmark results for bivariate exponential. Results are saved and plottet in seperate jupyter notebook
 
 
 
-
+random.seed(1234)
 print(f"Running on PyMC3 v{pm.__version__}")
 
 D = np.arange(0.1,1,step=0.1)
@@ -56,8 +57,8 @@ for delta in D:
         mis.append(est.NMI(y, k=10, unit='nats', eps=True, measure='MI'))
         mis.append(est.WMI(y, k=2, unit='nats', eps=1e-6, measure='MI'))
     mi = np.array(mis)
-    mi = mi.reshape(-1,6)
-    MI = pd.DataFrame(mi, columns=['KSG', 'BannMI','uBannMI', 'BannMI_MAP', 'NMI', 'WMI'])
+    mi = mi.reshape(-1,5)
+    MI = pd.DataFrame(mi, columns=['KSG', 'BannMI','uBannMI', 'NMI', 'WMI'])
     Deltas.append(MI)
     
 MiMu = [i.mean(axis=0) for i in Deltas]
